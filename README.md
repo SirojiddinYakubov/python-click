@@ -1,4 +1,4 @@
-![alt text](https://i.ibb.co/7CGQKQ8/banner.jpg)
+![banner photo](https://i.ibb.co/7CGQKQ8/banner.jpg)
 
 [![Downloads](https://img.shields.io/pypi/v/python-click)](https://pypi.org/project/python-click/)
 [![Downloads](https://black.readthedocs.io/en/stable/_static/license.svg)](https://github.com/yakubov9791999/python-click/blob/master/LICENSE)
