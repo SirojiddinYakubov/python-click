@@ -1,4 +1,4 @@
-![banner photo](https://i.ibb.co/7CGQKQ8/banner.jpg)
+<img src="https://i.ibb.co/7CGQKQ8/banner.jpg" alt="banner photo">
 
 [![Downloads](https://img.shields.io/pypi/v/python-click)](https://pypi.org/project/python-click/)
 [![Downloads](https://black.readthedocs.io/en/stable/_static/license.svg)](https://github.com/yakubov9791999/python-click/blob/master/LICENSE)
@@ -132,13 +132,16 @@ python manage.py migrate
 ```
 Теперь вы можете создать заказ в своем браузере по адресу http://127.0.0.1:8000/
 <br>
+<br>
 <img src="https://i.ibb.co/k6Pw0wm/2022-10-04-17-50.png" width="70%">
 
 Обратите внимание, что после создания заказа мы перейдем на сайт my.click.uz
 <br>
+<br>
 <img src="https://i.ibb.co/1XYKhzB/my-click.png" width="70%">
 
 Но нам нужно сначала проверить заказ локально для этого мы можем использовать данное [программное обеспечение](https://docs.click.uz/wp-content/uploads/2018/05/NEW-CLICK_API.zip). Мы просто получаем номер заказа и закрываем вкладку, начинаем проверку локально через программное обеспечение.
+<br>
 <br>
 <img src="https://i.ibb.co/pPQ8Tcd/jC6EN5D.png" width="70%">
 
