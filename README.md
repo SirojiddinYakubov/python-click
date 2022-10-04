@@ -1,4 +1,5 @@
-![logo jpg](banner.jpg "Logo")
+![logo png](https://i.postimg.cc/brrfqW8k/banner.jpg "Logo2")
+<img src="https://i.postimg.cc/brrfqW8k/banner.jpg" alt="ok">
 
 
 [![Downloads](https://img.shields.io/pypi/v/python-click)](https://pypi.org/project/python-click/)
