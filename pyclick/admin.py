@@ -1,5 +1,5 @@
 from django.contrib import admin
-from uzclick.models import ClickTransaction
+from pyclick.models import ClickTransaction
 
 
 @admin.register(ClickTransaction)

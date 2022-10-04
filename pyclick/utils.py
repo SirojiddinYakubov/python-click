@@ -2,7 +2,7 @@ from .status import ORDER_FOUND, ORDER_NOT_FOUND, INVALID_AMOUNT
 from django.conf import settings
 
 
-class UzClick:
+class PyClick:
     ORDER_FOUND = ORDER_FOUND
     ORDER_NOT_FOUND = ORDER_NOT_FOUND
     INVALID_AMOUNT = INVALID_AMOUNT

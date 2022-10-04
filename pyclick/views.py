@@ -1,19 +1,19 @@
 from rest_framework.views import APIView, Response
 from rest_framework.permissions import AllowAny
 
-from uzclick.authorization import authorization
-from uzclick.models import ClickTransaction
-from uzclick.serializers import UzClickSerializer
-from uzclick.status import *
+from pyclick.authorization import authorization
+from pyclick.models import ClickTransaction
+from pyclick.serializers import PyClickSerializer
+from pyclick.status import *
 
 
-class UzClickMerchantAPIView(APIView):
+class PyClickMerchantAPIView(APIView):
     authentication_classes = []
     permission_classes = [AllowAny]
     VALIDATE_CLASS = None
 
     def post(self, request):
-        serializer = UzClickSerializer(data=request.data)
+        serializer = PyClickSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
 
         METHODS = {

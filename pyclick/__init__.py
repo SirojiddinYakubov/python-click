@@ -1,1 +1,1 @@
-from .utils import UzClick
+from .utils import PyClick
