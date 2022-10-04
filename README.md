@@ -146,7 +146,7 @@ python manage.py migrate
 <br>
 <img src="https://i.ibb.co/pPQ8Tcd/jC6EN5D.png" width="70%">
 
-Заполните `service_id`, `merchant_user_id`, `secret_key` информацией, предоставленной "Click", в `merchant_trans_id` введите номер заказа. После этого начинайте проверить заказа. Это программное обеспечение проверяет заказ с помощью нескольких запросов. Подробнее [здесь](https://docs.click.uz/click-api/)
+Введите в `Prepare URL` и `Complete URL` http://localhost:8000/click/transaction/?format=json. Заполните `service_id`, `merchant_user_id`, `secret_key` информацией, предоставленной "Click", в `merchant_trans_id` введите номер заказа. После этого начинайте проверить заказа. Это программное обеспечение проверяет заказ с помощью нескольких запросов. Подробнее [здесь](https://docs.click.uz/click-api/)
 
 Для более подробной информации и для проверки заказа через систему Click, вы можете посмотреть по этой ссылке https://www.youtube.com/watch?v=X65PSzuTO6w&t
 
