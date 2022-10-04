@@ -1,4 +1,4 @@
-![test](https://i.ibb.co/7CGQKQ8/banner.jpg)
+![banner](banner.jpg)
 
 
 [![Downloads](https://img.shields.io/pypi/v/python-click)](https://pypi.org/project/python-click/)
