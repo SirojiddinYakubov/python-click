@@ -9,7 +9,7 @@
 <h1>Интеграция сервиса онлайн оплаты Click через фреймворк Django в Python</h1>
 </div>
 
-С помощью пакет `python-click` вы сможете очень легко интегрировать платежную систему CLick SHOP API. В этом руководстве показано, как интегрировать систему оплаты Click SHOP API. Более подробная информация об интеграции находится на официальном сайте [OOO "Click"](https://docs.click.uz/click-api/)
+С помощью пакет `python-click` вы сможете очень легко интегрировать платежную систему CLick SHOP API. В этом руководстве показано, как интегрировать систему оплаты Click SHOP API. Более подробная информация об интеграции находится на официальной документации [OOO "Click"](https://docs.click.uz/click-api/)
 
 ## Необходимые пакеты
 [Django](https://docs.djangoproject.com/) - свободный фреймворк для веб-приложений на языке Python, использующий шаблон проектирования MVC.
@@ -52,7 +52,7 @@ CLICK_SETTINGS = {
 
 В приложении `basic` в `models.py` создайте новую модель `ClickOrder`, с помощью этой модели мы можем создать заказ
 ```console
-from django import models
+from django.db import models
 
 class ClickOrder(models.Model):
     amount = models.DecimalField(decimal_places=2, max_digits=12)
@@ -114,6 +114,8 @@ class OrderTestView(PyClickMerchantAPIView):
 ```
 Добавьте следующее в свой корневой каталог `urls.py` файл.
 ```console
+from django.urls import include
+
 urlpatterns = [
     ...
     path('', include('basic.urls')),
@@ -121,6 +123,9 @@ urlpatterns = [
 ```
 В приложении `basic` создайте `urls.py`, потом поместите эти коды
 ```console
+from django.urls import path
+from basic import views
+
 urlpatterns = [
     path('', views.CreateClickOrderView.as_view()),
     path('click/transaction/', views.OrderTestView.as_view()),
@@ -131,31 +136,42 @@ urlpatterns = [
 python manage.py makemigrations
 python manage.py migrate
 ```
-Теперь вы можете создать заказ в своем браузере по адресу http://127.0.0.1:8000/
-<br>
-<br>
+Теперь вы можете создать заказ в своем браузере по адресу http://127.0.0.1:8000/ . Получим сумму заказа 500 сумов.
+> _**Предупреждение:**_
+> Если вы создадите сумму по-другому, произойдет ошибка при локальном тестировании через [тестовое программное обеспечение](https://docs.click.uz/wp-content/uploads/2018/05/NEW-CLICK_API.zip).
+
 <img src="https://i.ibb.co/k6Pw0wm/2022-10-04-17-50.png" width="70%">
 
-Обратите внимание, что после создания заказа мы перейдем на сайт my.click.uz
+Обратите внимание, что после создания заказа мы перейдем на сайт http://my.click.uz
 <br>
 <br>
 <img src="https://i.ibb.co/1XYKhzB/my-click.png" width="70%">
 
 Но нам нужно сначала проверить заказ локально для этого мы можем использовать данное [программное обеспечение](https://docs.click.uz/wp-content/uploads/2018/05/NEW-CLICK_API.zip). Мы просто получаем номер заказа и закрываем вкладку, начинаем проверку локально через программное обеспечение.
 > _**Предупреждение:**_
->  Если вы используете базу данных [SQLite](https://www.sqlite.org/), вы можете получить ошибку, поэтому мы рекомендуем использовать другую базу данных. Например: [MySQL](https://www.mysql.com/) или [PostgreSQL](https://www.postgresql.org/)
+> Если вы используете базу данных [SQLite](https://www.sqlite.org/), вы можете получить ошибку `OverflowError`, поэтому мы рекомендуем использовать другую базу данных. Например: [MySQL](https://www.mysql.com/) или [PostgreSQL](https://www.postgresql.org/)
 
 <br>
 <img src="https://i.ibb.co/pPQ8Tcd/jC6EN5D.png" width="70%">
 
-Введите в `Prepare URL` и `Complete URL` http://localhost:8000/click/transaction/?format=json. Заполните `service_id`, `merchant_user_id`, `secret_key` информацией, предоставленной "Click", в `merchant_trans_id` введите номер заказа. После этого начинайте проверить заказа. Это программное обеспечение проверяет заказ с помощью нескольких запросов. Подробнее [здесь](https://docs.click.uz/click-api/)
+Введите в `Prepare URL` и `Complete URL` http://localhost:8000/click/transaction/?format=json. Заполните `service_id`, `merchant_user_id`, `secret_key` информацией, предоставленной "Click", в `merchant_trans_id` введите номер заказа. После этого начинайте проверить заказа. 
 
-Для более подробной информации и для проверки заказа через систему Click, вы можете посмотреть это видео
+Это программное обеспечение проверяет заказ с помощью нескольких запросов. Всего существует 15 сценариев. В каждом сценарии отправляется разная информация, и заказ проверяется. Подробнее [здесь](https://docs.click.uz/click-api-request/)
+
+> _**Примечание:**_
+> После сценариев 7 и 11 программа останавливается. Выберите следующий сценарий и продолжите тестирование
+
+Если у вас есть 15 успешных сценариев, то ваши коды готовы к интеграции с платежной системой Click.
+
+Для более подробной информации, production интеграция с системой Click, настройка личного кабинета и для проверки заказа через систему [Merchant Click](https://merchant.click.uz/), вы можете посмотреть это видео
 
 [![Watch the video](https://img.youtube.com/vi/X65PSzuTO6w/maxresdefault.jpg)](https://youtu.be/X65PSzuTO6w)
 
+<h3>Спасибо за внимание!</h3>
+
 ## Автор
 [Sirojiddin Yakubov](https://t.me/Sirojiddin_Yakubov)
+
 
 <div align="center">
   Подпишитесь на нас, чтобы получать больше новостей о веб-программировании: <br>
