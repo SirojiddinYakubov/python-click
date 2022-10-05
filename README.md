@@ -1,6 +1,4 @@
-![logo png](https://i.postimg.cc/brrfqW8k/banner.jpg "Logo2")
-<img src="https://i.postimg.cc/brrfqW8k/banner.jpg" alt="ok">
-
+![banner](https://i.postimg.cc/brrfqW8k/banner.jpg "banner")
 
 [![Downloads](https://img.shields.io/pypi/v/python-click)](https://pypi.org/project/python-click/)
 [![Downloads](https://black.readthedocs.io/en/stable/_static/license.svg)](https://github.com/yakubov9791999/python-click/blob/master/LICENSE)
@@ -8,10 +6,10 @@
 [![Downloads](https://img.shields.io/badge/telegram-yakubovdeveloper-green)](https://t.me/yakubovdeveloper)
 [![Downloads](https://img.shields.io/badge/author-Sirojiddin_Yakubov-green)](https://t.me/Sirojiddin_Yakubov)
 <div align="center">
-<h1>Интегрировать платежную систему Click через фреймворк Django</h1>
+<h1>Интеграция сервиса онлайн оплаты Click через фреймворк Django в Python</h1>
 </div>
 
-С помощью этого пакета вы сможете очень легко интегрировать платежную систему CLick. В этом руководстве показано, как очень легко интегрировать систему оплаты Click. Сделайте все в указанной последовательности.
+С помощью пакет `python-click` вы сможете очень легко интегрировать платежную систему CLick SHOP API. В этом руководстве показано, как интегрировать систему оплаты Click SHOP API. Более подробная информация об интеграции находится на официальном сайте [OOO "Click"](https://docs.click.uz/click-api/)
 
 ## Необходимые пакеты
 [Django](https://docs.djangoproject.com/) - свободный фреймворк для веб-приложений на языке Python, использующий шаблон проектирования MVC.
@@ -49,6 +47,7 @@ CLICK_SETTINGS = {
     'merchant_user_id': "<Ваш merchant user ID>",
 }
 ```
+> _**Примечание:**_
 > Эти информации будет предоставлена ​​вам после того, как вы подписали контракт с OOO «Click»
 
 В приложении `basic` в `models.py` создайте новую модель `ClickOrder`, с помощью этой модели мы можем создать заказ
@@ -143,13 +142,17 @@ python manage.py migrate
 <img src="https://i.ibb.co/1XYKhzB/my-click.png" width="70%">
 
 Но нам нужно сначала проверить заказ локально для этого мы можем использовать данное [программное обеспечение](https://docs.click.uz/wp-content/uploads/2018/05/NEW-CLICK_API.zip). Мы просто получаем номер заказа и закрываем вкладку, начинаем проверку локально через программное обеспечение.
-<br>
+> _**Предупреждение:**_
+>  Если вы используете базу данных [SQLite](https://www.sqlite.org/), вы можете получить ошибку, поэтому мы рекомендуем использовать другую базу данных. Например: [MySQL](https://www.mysql.com/) или [PostgreSQL](https://www.postgresql.org/)
+
 <br>
 <img src="https://i.ibb.co/pPQ8Tcd/jC6EN5D.png" width="70%">
 
 Введите в `Prepare URL` и `Complete URL` http://localhost:8000/click/transaction/?format=json. Заполните `service_id`, `merchant_user_id`, `secret_key` информацией, предоставленной "Click", в `merchant_trans_id` введите номер заказа. После этого начинайте проверить заказа. Это программное обеспечение проверяет заказ с помощью нескольких запросов. Подробнее [здесь](https://docs.click.uz/click-api/)
 
-Для более подробной информации и для проверки заказа через систему Click, вы можете посмотреть по этой ссылке https://www.youtube.com/watch?v=X65PSzuTO6w&t
+Для более подробной информации и для проверки заказа через систему Click, вы можете посмотреть это видео
+
+[![Watch the video](https://img.youtube.com/vi/X65PSzuTO6w/maxresdefault.jpg)](https://youtu.be/X65PSzuTO6w)
 
 ## Автор
 [Sirojiddin Yakubov](https://t.me/Sirojiddin_Yakubov)
