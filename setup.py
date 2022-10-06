@@ -22,8 +22,8 @@ if sys.argv[-1] == 'publish':
 
 PACKAGE = "pyclick"
 PACKAGE_NAME = "python-click"
-VERSION = '0.0.12'
-DESCRIPTION = 'Этот пакет позволяет легко интегрировать платежную систему Click через фреймворк Django'
+VERSION = '0.0.13'
+DESCRIPTION = 'Этот пакет позволяет легко интегрировать платежную систему Click через фреймворк Django в Python'
 
 
 setup(

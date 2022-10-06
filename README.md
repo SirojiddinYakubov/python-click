@@ -6,10 +6,10 @@
 [![Downloads](https://img.shields.io/badge/telegram-yakubovdeveloper-green)](https://t.me/yakubovdeveloper)
 [![Downloads](https://img.shields.io/badge/author-Sirojiddin_Yakubov-green)](https://t.me/Sirojiddin_Yakubov)
 <div align="center">
-<h1>Интеграция сервиса онлайн оплаты Click через фреймворк Django в Python</h1>
+<h1>Интеграция сервиса онлайн оплаты CLICK через фреймворк Django в Python</h1>
 </div>
 
-С помощью пакет `python-click` вы сможете очень легко интегрировать платежную систему CLick SHOP API. В этом руководстве показано, как интегрировать систему оплаты Click SHOP API. Более подробная информация об интеграции находится на официальной документации [OOO "Click"](https://docs.click.uz/click-api/)
+С помощью пакет `python-click` вы сможете очень легко интегрировать платежную систему CLICK SHOP API. В этом руководстве показано, как интегрировать систему оплаты CLICK SHOP API. Через этот «CLICK SHOP API» вы сможете получать платежи за различные товары, услуги и покупки в Интернет Магазине. Более подробная информация об интеграции находится на официальной документации [OOO "Click"](https://docs.click.uz/click-api/)
 
 ## Необходимые пакеты
 [Django](https://docs.djangoproject.com/) - свободный фреймворк для веб-приложений на языке Python, использующий шаблон проектирования MVC.
@@ -154,25 +154,25 @@ python manage.py migrate
 <br>
 <img src="https://i.ibb.co/pPQ8Tcd/jC6EN5D.png" width="70%">
 
-Введите в `Prepare URL` и `Complete URL` http://localhost:8000/click/transaction/?format=json. Заполните `service_id`, `merchant_user_id`, `secret_key` информацией, предоставленной "Click", в `merchant_trans_id` введите номер заказа. После этого начинайте проверить заказа. 
+Введите в `Prepare URL` и `Complete URL` http://localhost:8000/click/transaction/?format=json. Заполните `service_id`, `merchant_user_id`, `secret_key` информацией, предоставленной "CLICK", в `merchant_trans_id` введите номер заказа. После этого начинайте проверить заказа. 
 
 Это программное обеспечение проверяет заказ с помощью нескольких запросов. Всего существует 15 сценариев. В каждом сценарии отправляется разная информация, и заказ проверяется. Подробнее [здесь](https://docs.click.uz/click-api-request/)
 
 > _**Примечание:**_
 > После сценариев 7 и 11 программа останавливается. Выберите следующий сценарий и продолжите тестирование
 
-Если у вас успешно прошли 15 сценариев, то ваши коды готовы к интеграции с платежной системой Click.
+Если у вас успешно прошли 15 сценариев, то ваши коды готовы к интеграции с платежной системой CLICK.
 
-Для более подробной информации, production интеграция с системой Click, настройка личного кабинета и для проверки заказа через систему [Merchant Click](https://merchant.click.uz/), вы можете посмотреть это видео
+Для более подробной информации, production интеграция с системой CLICK, настройка личного кабинета и для проверки заказа через систему [Merchant CLICK](https://merchant.click.uz/), вы можете посмотреть это видео
 
-[![Watch the video](https://img.youtube.com/vi/X65PSzuTO6w/maxresdefault.jpg)](https://youtu.be/X65PSzuTO6w)
+[![Watch the video](https://img.youtube.com/vi/HHQ9QKSObyI/maxresdefault.jpg)](https://youtu.be/HHQ9QKSObyI)
 
 <h3>Спасибо за внимание!</h3>
 
 ## Автор
 [Sirojiddin Yakubov](https://t.me/Sirojiddin_Yakubov)
 
-
+## Социальные сети
 <div align="center">
   Подпишитесь на нас, чтобы получать больше новостей о веб-программировании: <br>
   <a href="https://www.youtube.com/channel/UCeJ6Sc3SaKKArAurnCwlJBw">YouTube</a>
