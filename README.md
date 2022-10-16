@@ -52,7 +52,7 @@ from django.urls import include
 
 urlpatterns = [
     ...
-    path('pyclick', include('pyclick.urls')),
+    path('pyclick/', include('pyclick.urls')),
 ]
 ```
 Выполните команды `makemigrations` и `migrate`
