@@ -6,10 +6,10 @@
 [![Downloads](https://img.shields.io/badge/telegram-yakubovdeveloper-green)](https://t.me/yakubovdeveloper)
 [![Downloads](https://img.shields.io/badge/author-Sirojiddin_Yakubov-green)](https://t.me/Sirojiddin_Yakubov)
 <div align="center">
-<h1>Интеграция сервиса онлайн оплаты CLICK через фреймворк Django в Python</h1>
+<h1>Интеграция сервиса онлайн оплаты CLICK SHOP API через фреймворк Django в Python</h1>
 </div>
 
-С помощью пакет `python-click` вы сможете очень легко интегрировать платежную систему CLICK SHOP API. В этом руководстве показано, как интегрировать систему оплаты CLICK SHOP API. Через этот «CLICK SHOP API» вы сможете получать платежи за различные товары, услуги и покупки в Интернет Магазине. Более подробная информация об интеграции находится на официальной документации [OOO "Click"](https://docs.click.uz/click-api/)
+С помощью пакет `python-click` вы сможете очень легко интегрировать платежную систему CLICK SHOP API. Используйте версию `0.1` для интеграции CLICK SHOP API. В этом руководстве показано, как интегрировать систему оплаты CLICK SHOP API. Через этот «CLICK SHOP API» вы сможете получать платежи за различные товары, услуги и покупки в Интернет Магазине. Более подробная информация об интеграции находится на официальной документации [OOO "Click"](https://docs.click.uz/click-api/)
 
 ## Необходимые пакеты
 [Django](https://docs.djangoproject.com/) - свободный фреймворк для веб-приложений на языке Python, использующий шаблон проектирования MVC.
@@ -19,7 +19,7 @@
 ## Установка
 Установите с помощью pip, включая любые дополнительные пакеты, которые вы хотите...
 ```bash
-pip install python-click
+pip install python-click==0.1
 ```
 ...или клонируйте проект с github
 ```console
@@ -55,6 +55,7 @@ CLICK_SETTINGS = {
 from django.db import models
 
 class ClickOrder(models.Model):
+    is_paid = models.BooleanField(default=False)
     amount = models.DecimalField(decimal_places=2, max_digits=12)
 ```
 В приложении `basic` создайте `serializers.py`, потом поместите эти коды
@@ -65,7 +66,7 @@ from .models import ClickOrder
 class ClickOrderSerializer(serializers.ModelSerializer):
     class Meta:
         model = ClickOrder
-        fields = ["amount"]
+        fields = ["amount", "is_paid"]
 ```
 В приложении `basic` в `views.py` создайте новый класс `CreateClickOrderView`,`OrderCheckAndPayment` и `OrderTestView`. C помощью `CreateClickOrderView` класса мы создадим заказ, после этого система Click проверяет наш заказ с помощью классы `OrderCheckAndPayment` и `OrderTestView`. Чтобы получить больше информации, переходите по этой ссылке [Документация Click](https://docs.click.uz/). 
 ```console
@@ -101,6 +102,7 @@ class OrderCheckAndPayment(PyClick):
                 return self.ORDER_NOT_FOUND
 
     def successfully_payment(self, order_id: str, transaction: object):
+        """ Эта функция вызывается после успешной оплаты """
         try:
             order = ClickOrder.objects.get(id=order_id)
             order.is_paid = True
