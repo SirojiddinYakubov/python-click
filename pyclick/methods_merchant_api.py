@@ -133,7 +133,7 @@ class ApiHelper:
         if isinstance(transaction, ClickTransaction):
             check_payment = self.get('/payment/status/{service_id}/{payment_id}'.format(
                 service_id=self.service_id,
-                payment_id=self.transaction_id
+                payment_id=transaction.click_paydoc_id
             ))
             if check_payment.status_code == 200:
                 _json = check_payment.json()
@@ -221,7 +221,7 @@ class ApiHelper:
                 "service_id": self.service_id,
                 "card_token": self.data['card_token'],
                 "amount": str(transaction.amount),
-                "transaction_parameter": transaction.id
+                "transaction_parameter": self.transaction_id
             }
             response = self.post('/card_token/payment', data=data)
             if response.status_code == 200:
