@@ -4,28 +4,37 @@ from django.utils.translation import gettext_lazy as _
 
 
 class ClickTransaction(models.Model):
-    """
-    Класс ClickTransaction
-    Этот объект модели создается автоматически во время совершения платежа
-
-    Подробнее здесь: https://docs.click.uz/click-api-request/
-    """
+    """ Класс ClickTransaction """
     PROCESSING = 'processing'
-    FINISHED = 'finished'
+    WAITING = "waiting"
+    CONFIRMED = 'confirmed'
     CANCELED = 'canceled'
+    ERROR = 'error'
+
     STATUS = (
+        (WAITING, WAITING),
         (PROCESSING, PROCESSING),
-        (FINISHED, FINISHED),
-        (CANCELED, CANCELED)
+        (CONFIRMED, CONFIRMED),
+        (CANCELED, CANCELED),
+        (ERROR, ERROR)
     )
-    click_trans_id = models.CharField(verbose_name=_('Транзакция ID'), max_length=255)
-    merchant_trans_id = models.CharField(verbose_name=_('Merchant транзакция ID'), max_length=255)
-    amount = models.CharField(verbose_name=_('Сумма оплаты (в сумах)'), max_length=255)
-    action = models.CharField(verbose_name=_("Выполняемое действие"), max_length=255)
-    sign_string = models.CharField(
-        verbose_name=_("Проверочная строка, подтверждающая подлинность отправляемого запроса."), max_length=255)
-    sign_datetime = models.DateTimeField(verbose_name=_("Дата платежа"), max_length=255)
-    status = models.CharField(max_length=25, choices=STATUS, default=PROCESSING, verbose_name=_("Статус"))
+    click_paydoc_id = models.CharField(verbose_name=_('Номер платежа в системе CLICK'), max_length=255, blank=True)
+    amount = models.DecimalField(verbose_name=_('Сумма оплаты (в сумах)'), max_digits=9, decimal_places=2,
+                                 default="0.0")
+    action = models.CharField(verbose_name=_("Выполняемое действие"), max_length=255, blank=True, null=True)
+    status = models.CharField(verbose_name=_("Статус"), max_length=25, choices=STATUS, default=WAITING)
+    created = models.DateTimeField(auto_now_add=True)
+    modified = models.DateTimeField(auto_now=True)
+    extra_data = models.TextField(blank=True, default="")
+    message = models.TextField(blank=True, default="")
 
     def __str__(self):
-        return self.click_trans_id
+        return self.click_paydoc_id
+
+    def change_status(self, status: str, message=""):
+        """
+        Обновляет статус платежа
+        """
+        self.status = status
+        self.message = message
+        self.save(update_fields=["status", "message"])

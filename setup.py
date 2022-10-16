@@ -22,9 +22,8 @@ if sys.argv[-1] == 'publish':
 
 PACKAGE = "pyclick"
 PACKAGE_NAME = "python-click"
-VERSION = '0.1'
+VERSION = '0.1.1'
 DESCRIPTION = 'Этот пакет позволяет легко интегрировать платежную систему Click через фреймворк Django в Python'
-
 
 setup(
     name=PACKAGE_NAME,
@@ -36,8 +35,9 @@ setup(
     long_description=long_description,
     python_requires=">=3.6",
     packages=find_packages(),
-    install_requires=['django', 'djangorestframework'],
-    keywords=['python', 'click', 'django', 'django rest framework'],
+    install_requires=['django', 'djangorestframework', 'requests'],
+    keywords=['python', 'click', 'django', 'django rest framework', 'requests', 'python-click', 'pyclick',
+              'yakubov9791999', "Sirojiddin Yakubov", "Yakubov Developer"],
     url="https://github.com/yakubov9791999/python-click",
     classifiers=[
         'Development Status :: 5 - Production/Stable',
