@@ -99,7 +99,7 @@ https://example.com/pyclick/process/click/transaction/?format=json
 
 Вы можете оплатить, введя номер карты или номер телефона. 
 
-Полная информация, локальное тестирование, реальная интеграция с системой CLICK SHOP API, настройка личного кабинета и для проверки заказа через систему [Merchant CLICK](https://merchant.click.uz/) вы можете найти по этой ссылке https://pypi.org/project/python-click/0.1/ или в этом видео
+Полная информация, локальное тестирование, реальная интеграция с системой `CLICK SHOP API`, настройка личного кабинета и для проверки заказа через систему [Merchant CLICK](https://merchant.click.uz/) вы можете найти по этой ссылке https://pypi.org/project/python-click/0.1/ или в этом видео
 
 [![Watch the video](https://img.youtube.com/vi/HHQ9QKSObyI/maxresdefault.jpg)](https://youtu.be/HHQ9QKSObyI)
 
@@ -183,9 +183,6 @@ POST http://127.0.0.1:8000/pyclick/process/click/service/delete_card_token
 > ```
 > card_token - Токен карты
 > ```
-> ```
-> transaction_id - ID заказа
-> ```
 ---
 ### Снятие платежа (отмена)
 ```
@@ -206,11 +203,11 @@ POST http://127.0.0.1:8000/pyclick/process/click/service/check_payment_status
 > ```
 ---
 
-Вы можете отправить эти запросы через [Postman](https://www.postman.com/). Загрузите [эту коллекцию](https://) и импортируйте ее в свой `postman`. В этой коллекции все запросы и обязательные поля написано.
+Вы можете отправить эти запросы через [Postman](https://www.postman.com/). Загрузите [эту коллекцию](https://drive.google.com/file/d/1G1xTfVIzQBf8ebqcjEzn_w9m6sXeiXBp/view) и импортируйте ее в свой `postman`. В этой коллекции все запросы и обязательные поля написано.
 
-[comment]: <> (Для более подробной информации, production интеграция с системой CLICK, настройка личного кабинета и для проверки заказа через систему [Merchant CLICK]&#40;https://merchant.click.uz/&#41;, вы можете посмотреть это видео)
+Для более подробной информации, создание заказа, `production` интеграция с системой `CLICK SHOP API` и `Merchant API`, настройка личного кабинета и для проверки заказа через систему [Merchant CLICK](https://merchant.click.uz/), вы можете посмотреть это видео
 
-[comment]: <> ([![Watch the video]&#40;https://img.youtube.com/vi/HHQ9QKSObyI/maxresdefault.jpg&#41;]&#40;https://youtu.be/HHQ9QKSObyI&#41;)
+[![Watch the video](https://img.youtube.com/vi/6ueLGj3Ea5M/maxresdefault.jpg)](https://youtu.be/6ueLGj3Ea5M)
 
 ## Спасибо за внимание!
 
